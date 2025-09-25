@@ -36,6 +36,7 @@
     text-transform: uppercase;
 }
 .btn-style {
+    cursor:pointer;
     background-color: var(--main-color);
     color: var(--details-text-color);
     font-size: var(--text-medium);

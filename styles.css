@@ -11,8 +11,11 @@
     --secondary-font: "Roboto", sans-serif;
 
     /* размеры шрифтов */
+    --text-base-adapt:14px;
     --text-base:16px;
     --text-medium:18px;
+    --text-large-adapt-2:20px;
+    --text-large-adapt-1:30px;
     --text-large: 36px;
 
 }
@@ -32,7 +35,6 @@
     font-size: var(--text-large);
     text-transform: uppercase;
 }
-
 .btn-style {
     background-color: var(--main-color);
     color: var(--details-text-color);
@@ -72,9 +74,69 @@
     transition: all ease-in-out 0.1s;
     text-transform: uppercase;
 }
-nav a:hover {
+nav a:hover,
+.nav-adaptiv ul li a:hover {
     color: var(--hover-color);
 }
+
+/*Бургер меню*/
+.burger {
+    width: 50px;
+    height: 50px;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px var(--main-color);
+    border-radius: 8px;
+    cursor: pointer;
+    position:relative;
+}
+.burger__line {
+    border: 1px var(--main-color) solid;
+    width: 23px;
+    border-radius: 100px;
+}
+.nav-adaptiv {
+    z-index: 1000;
+    display: none;
+    position: absolute;
+    top: 70px;
+    background-color: white;
+}
+.nav-adaptiv ul li{
+    padding: 20px 0;
+    width: 768px;
+    border-bottom: solid 1px #D5DFE9;
+}
+.nav-adaptiv ul li a {
+    color: var(--main-color);
+    font-family: var(--main-font);
+    font-size: var(--text-base);
+    text-transform: uppercase;
+    transition: all ease-in-out 0.1s;
+}
+.nav-adaptiv ul li:last-of-type {
+    margin-bottom: 50px;
+}
+.active {
+    display: flex;
+}
+.burger.active .burger__line:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+        background: var(--main-color);
+    }
+
+    .burger.active .burger__line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger.active .burger__line:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+        background: var(--main-color);
+    }
+
 .recommendation {
     margin-top: 80px;
     display: flex;
@@ -91,13 +153,12 @@ nav a:hover {
     align-items: center;
     gap: 30px;
     width: 705px;
-    max-height: 220px;
+    height: 220px;
     border: var(--border-color) 1px solid;
     border-radius:8px;
     box-shadow: 0 5px 15px rgba(white, white, white, 0.8);
     color: var(--main-color);
 }
-
 .recomend-card-info  {
     display: flex;
     flex-direction: column;
@@ -190,4 +251,119 @@ nav a:hover {
 }
 .wrapper-about-info p:last-of-type {
     margin-bottom: 10px;
+}
+
+
+/* Адаптив */
+
+@media only screen and (max-width: 1440px) {
+    .title {
+        font-size: var(--text-large-adapt-1);
+    }
+    .wrapper {
+        max-width: 1160px;
+    }
+    .card {
+        width: 565px;
+    }
+}
+@media  only screen and (max-width:1160px) {
+    .title {
+        font-size: var(--text-large-adapt-2);
+    }
+    .wrapper {
+        max-width: 768px;
+    }
+    .nav {
+        display: none;
+    }
+    .burger {
+        display: flex;
+    }
+    .card {
+        width: 768px;
+    }
+     .about {
+        margin-top: 50px;
+    }
+    .wrapper-about-content {
+        flex-direction: column;
+    }
+}
+@media  only screen and (max-width:768px) {
+    .title {
+        font-size: var(--text-large-adapt-2);
+    }
+    .wrapper {
+        max-width: 576px;
+    }
+    .nav-adaptiv ul li {
+        max-width: 576px;
+    }
+    .card {
+        width: 576px;
+    }
+    .wrapper-about-info {
+        max-width: 576px;
+    }
+    .about-img-1 img {
+         width: 100%;
+        max-width: 576px;
+    }
+    .about-img-2 img, .about-img-3 img {
+        width: 100%;
+        max-width: 275px;
+    }
+    .wrapper-about-img {
+        gap: 25px;
+    }
+}
+@media  only screen and (max-width:576px) {
+    .title {
+        font-size: 19px;
+    }
+    .wrapper {
+        max-width: 360px;
+    }
+    .nav-adaptiv ul li {
+        max-width: 360px;
+    }
+    .wrapper-rec-content {
+        gap: 20px;
+    }
+    .card {
+        gap: 0;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 170px;
+        height: 373px;
+    }
+    .card5,.card6 {
+        display: none;
+    }
+    .card-img img {
+        width: 170px;
+    }
+    
+    .recomend-card-info {
+        padding: 10px;
+    }
+    .recomend-card-info p:first-of-type {
+        font-size: var(--text-base);
+        font-family: var(--main-font);
+    }
+    .status {
+        font-size: var(--text-base-adapt);
+    }
+    .about-img-1 img {
+         width: 100%;
+        max-width: 360px;
+    }
+    .about-img-2 img, .about-img-3 img {
+        width: 100%;
+        max-width: 172px;
+    }
+    .wrapper-about-img {
+        gap: 15px;
+    }
 }
